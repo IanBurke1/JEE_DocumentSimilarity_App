@@ -15,10 +15,14 @@ import xtea_db4o.XTEA;
 import xtea_db4o.XTeaEncryptionStorage;
 
 public class DBRunner {
+	//Variables
 	private ObjectContainer db = null;
-	private List<Shingle> shingles = new ArrayList<Shingle>();
+	private List<Shingle> docs = new ArrayList<Shingle>();
 	
+	//Constructor
 	public DBRunner(){
+		
+		//init(); //Populate the database
 		
 		EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
 		config.common().add(new TransparentActivationSupport());
@@ -29,24 +33,24 @@ public class DBRunner {
 		config.file().storage(new XTeaEncryptionStorage("password", XTEA.ITERATIONS64));
 		
 		//Open a local database. Use Db4o.openServer(config, server, port) for full client / server
-		db = Db4oEmbedded.openFile(config, "shingles.data");
+		db = Db4oEmbedded.openFile(config, "docs.data");
 		
-		addShinglesToDB();
-		showAllShingles();
+		addDocToDB();
+		//showAllShingles();
 		
 		
 		
 	}
 	
-	private void addShinglesToDB(){
-		for (Shingle s: shingles){
+	private void addDocToDB(){
+		for (Shingle s: docs){
 			db.store(s); //Adds Shingle to db
 		}
 		db.commit(); //Commits the tx
 		//db.rollback(); //Rolls back the tx
 	}
 	
-	private void ShowAllShingles(){
+	private void showAllShingles(){
 		//An ObjectSet is a specialised List for storing results
 		ObjectSet<Shingle> shingles = db.query(Shingle.class);
 		for (Shingle shingle  : shingles){
@@ -58,7 +62,9 @@ public class DBRunner {
 	}
 	
 	
-	
+	public static void main(String[] args) {
+		new DBRunner();
+	}
 	
 
 }

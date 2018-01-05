@@ -128,10 +128,18 @@ public class ServiceHandler extends HttpServlet {
 		out.print("<font color=\"0000ff\">");	
 		BufferedReader br = new BufferedReader(new InputStreamReader(part.getInputStream()));
 		String line = null;
+		int SHINGLE_SIZE = 10;
 		while ((line = br.readLine()) != null) {
 			//Break each line up into shingles and do something. The servlet really should act as a
 			//contoller and dispatch this task to something else... Divide and conquer...! I've been
 			//telling you all this since 2nd year...!
+			/*
+			String[] words = line.split(" ");
+			StringBuilder sb = new StringBuilder();
+			for (int i = 0; i<SHINGLE_SIZE; i++){
+				append(words[i]);
+			}
+			*/
 			out.print(line);
 		}
 		out.print("</font>");	
