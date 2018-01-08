@@ -3,7 +3,7 @@ package ie.gmit.sw;
 import java.util.ArrayList;
 
 /*
- * Bean class for Shingle
+ * Bean class for Shingles
  */
 
 public class Shingle {

@@ -1,6 +1,7 @@
 package ie.gmit.sw;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import com.db4o.Db4o;
@@ -14,7 +15,11 @@ import com.db4o.ta.TransparentPersistenceSupport;
 import xtea_db4o.XTEA;
 import xtea_db4o.XTeaEncryptionStorage;
 
-public class DBRunner {
+/*
+ * DBRunner class is where the DB4O is established and configured.
+ */
+
+public class DBRunner implements DocumentService{
 	//Variables
 	private ObjectContainer db = null;
 	private List<Shingle> docs = new ArrayList<Shingle>();
@@ -35,20 +40,12 @@ public class DBRunner {
 		//Open a local database. Use Db4o.openServer(config, server, port) for full client / server
 		db = Db4oEmbedded.openFile(config, "docs.data");
 		
-		addDocToDB();
-		//showAllShingles();
-		
+		compareDoc();
+		saveDoc();
 		
 		
 	}
 	
-	private void addDocToDB(){
-		for (Shingle s: docs){
-			db.store(s); //Adds Shingle to db
-		}
-		db.commit(); //Commits the tx
-		//db.rollback(); //Rolls back the tx
-	}
 	
 	private void showAllShingles(){
 		//An ObjectSet is a specialised List for storing results
@@ -64,6 +61,22 @@ public class DBRunner {
 	
 	public static void main(String[] args) {
 		new DBRunner();
+	}
+
+	@Override
+	public void compareDoc() {
+		//Jaccard..
+		
+	}
+
+	@Override
+	public void saveDoc() {
+		for (Shingle s: docs){
+			db.store(s); //Adds Shingle to db
+		}
+		db.commit(); //Commits the tx
+		//db.rollback(); //Rolls back the tx
+		
 	}
 	
 
