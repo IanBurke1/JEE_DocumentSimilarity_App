@@ -16,9 +16,13 @@ A JSP page is a text document that contains two types of text: static data, whic
 
 
 ## Servlet
- servlet is a Java programming language class that is used to extend the capabilities of servers that host applications accessed by means of a request-response programming model. Although servlets can respond to any type of request, they are commonly used to extend the applications hosted by web servers.
+ Servlet is a Java programming language class that is used to extend the capabilities of servers that host applications accessed by means of a request-response programming model. Although servlets can respond to any type of request, they are commonly used to extend the applications hosted by web servers.
 
 ## DB4O
 db4o (Database for Objects) is the open source object database that enables developers to store and retrieve any application object with one line of code.
 
 ## Threads
+Multithreading refers to two or more tasks executing concurrently within a single program. A thread is an independent path of execution within a program. Many threads can run concurrently within a program. Every thread in Java is created and controlled by the java.lang.Thread class.
+
+# Conclusion
+I got the tomcat server up and running. I configured the database but couldnt get going with anything else. I am currently struggling with Java.
