@@ -24,5 +24,3 @@ db4o (Database for Objects) is the open source object database that enables deve
 ## Threads
 Multithreading refers to two or more tasks executing concurrently within a single program. A thread is an independent path of execution within a program. Many threads can run concurrently within a program. Every thread in Java is created and controlled by the java.lang.Thread class.
 
-# Conclusion
-I got the tomcat server up and running. I configured the database but couldnt get going with anything else. I am currently struggling with Java.
